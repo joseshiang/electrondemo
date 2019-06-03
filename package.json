@@ -1,0 +1,17 @@
+{
+  "name": "electrondemo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "electron-build": "electron-packager ./ --overwrite --platform=win32 --arch=x64"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "latest",
+    "electron-packager": "^13.1.1"
+  }
+}
