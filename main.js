@@ -9,36 +9,30 @@ let win;
 //创建窗口
 function createWindow () {
     // 创建一个浏览器窗口
-    win = new BrowserWindow({width: 800, height: 600});
+    win = new BrowserWindow({
+        width: 800,
+        height: 600,
+        webPreferences: {
+            nodeIntegration: true
+        }
+    });
 
-    // 将index.html加载到app中
-    win.loadURL(url.format({
-        pathname: path.join(__dirname, 'index.html'),
-        protocol: 'file:',
-        slashes: true
-    }));
+    // 将index.html文件
+    win.loadFile("index.html");
 
     // 打开开发者工具
     //win.webContents.openDevTools();
 
-    // 监听关闭窗口事件
+    // 监听关闭窗口事件,当window窗口被关闭时候，这个事件会出发
     win.on('closed', () => {
-        // 取消引用 window 对象，如果你的应用支持多窗口的话，
-        // 通常会把多个 window 对象存放在一个数组里面，
-        // 但这次不是。
         win = null
     })
 }
+
+//创建浏览器窗口调用这个函数，部分API在调用ready事件触发才能使用
 app.on('ready', createWindow);
 
-app.on('activate', () => {
-    if (win === null) {
-        console.log("hi11");
-        createWindow();
-    }
-});
-
-// 所有窗口关闭后推出
+// 所有窗口关闭后退出
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
         app.quit();
