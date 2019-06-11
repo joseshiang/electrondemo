@@ -12,13 +12,8 @@
 </head>
 <body>
     <div class="container-fluid text-center"><br>
-        <span draggable="true">请将文件拖拽到下方区域 </span><br><br>
-        <div id="content"
-             ondrop="drop(event)"
-             ondragenter="dragEnter(event)"
-             ondragover="dragover(event)"
-             style="height:400px;background-color: rgba(128,0,128,0.51);">
-        </div>
+        <span>请将文件拖拽到下方区域 </span><br><br>
+        <div id="content" style="height:400px;background-color: rgba(128,0,128,0.51);overflow-y: auto;"></div>
     </div>
 </body>
 </html>

@@ -30,7 +30,7 @@ function createWindow () {
     //win.loadURL("https://www.baidu.com");
 
     // 打开开发者工具
-    win.webContents.openDevTools();
+    //win.webContents.openDevTools();
 
     // 监听关闭窗口事件,当window窗口被关闭时候，这个事件会出发
     win.on('closed', () => {
