@@ -1,15 +1,28 @@
-//引入模块
-const fs = require("fs");
-
-//导入数据
-//注意文件路径path指的是引入html之后的相对路径，而不是当前js文件的路径!
-function importData() {
-    fs.readFile("./package.json",(err,data) => {
-        if(err) {
-            alert("出错啦!");
-            console.log(err);
-        }
-        //赋值
-        $("#content").text(data);
-    });
+/**
+ * 拖拽进入
+ * @param e
+ */
+function dragEnter(e) {
+    //设置允许放置，阻止对元素默认处理
+    e.preventDefault();
 }
+
+/**
+ * 放置位置
+ * @param e
+ */
+function dragover(e) {
+    //设置允许放置，阻止对元素默认处理
+    e.preventDefault();
+}
+
+/**
+ * 进行放置
+ * @param e
+ */
+function drop(e) {
+    console.log(e);
+    console.log(e.dataTransfer);
+    //let file = e.dataTransfer.files[0];
+}
+

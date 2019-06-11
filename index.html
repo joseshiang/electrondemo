@@ -11,11 +11,14 @@
     <script src="./renderer/index.js"></script>
 </head>
 <body>
-    <div class="container-fluid text-center">
-        <br>
-        <button onclick="importData()" class="btn btn-primary btn-sm">导入数据</button>
-        <br><br>
-        <div id="content" style="height:400px;background-color: rgba(128,0,128,0.51);"></div>
+    <div class="container-fluid text-center"><br>
+        <span draggable="true">请将文件拖拽到下方区域 </span><br><br>
+        <div id="content"
+             ondrop="drop(event)"
+             ondragenter="dragEnter(event)"
+             ondragover="dragover(event)"
+             style="height:400px;background-color: rgba(128,0,128,0.51);">
+        </div>
     </div>
 </body>
 </html>
