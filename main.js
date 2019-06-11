@@ -13,7 +13,13 @@ function createWindow () {
     // 创建一个浏览器窗口
     win = new BrowserWindow({
         width: 800,
-        height: 600
+        height: 600,
+        webPreferences: {
+            //是否完整的支持node. 默认值为true
+            nodeIntegration: true,
+            //是否在Web工作器中启用了Node集成
+            nodeIntegrationInWorker: false,
+        }
     });
 
     // 设置任务栏进度条

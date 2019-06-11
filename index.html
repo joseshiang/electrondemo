@@ -4,16 +4,18 @@
     <meta charset="UTF-8">
     <title>App</title>
     <link href="./static/bootstrap.min.css" rel="stylesheet">
-    <script type="text/javascript" src="./static/jquery-3.4.1.js"></script>
+    <!--引入jquery-->
+    <script>window.$ = window.jQuery = require("./static/jquery-3.4.1.js");</script>
     <script type="text/javascript" src="./static/bootstrap.min.js"></script>
+    <!--引入渲染js页面-->
     <script src="./renderer/index.js"></script>
 </head>
 <body>
-        <div class="container-fluid text-center">
-            <br>
-            <button onclick="importData(this)" class="btn btn-primary btn-sm">导入数据</button>
-            <br><br>
-            <div id="content" style="height:400px;background-color: rgba(128,0,128,0.51);"></div>
-        </div>
+    <div class="container-fluid text-center">
+        <br>
+        <button onclick="importData()" class="btn btn-primary btn-sm">导入数据</button>
+        <br><br>
+        <div id="content" style="height:400px;background-color: rgba(128,0,128,0.51);"></div>
+    </div>
 </body>
 </html>
