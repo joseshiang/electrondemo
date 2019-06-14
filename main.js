@@ -6,14 +6,21 @@ const url = require('url');
 const fs = require("fs");
 
 //主进程与渲染进行进程通讯
-//选择文件
-ipcMain.on('open-file-dialog',(event) => {
-    dialog.showOpenDialog({properties:['openFile','openDirctory']},(files) => {
-        if(files) {
-            event.sender.send('selected-dictronary',files);
-        }
+ipcMain.on('open-error-dialog',(event) => {
+    dialog.showErrorBox("错误通知","系统后台报错，请联系管理员。");
+});
+ipcMain.on('open-message-diag',(event) => {
+    dialog.showMessageBox({title:"通知",message:'提示信息'},(number,checkBoxChecked)=> {
+        console.log('number = ' + number);
+        console.log('checkBoxChecked = ' + checkBoxChecked);
     });
 });
+ipcMain.on('open-center-diaglog',(event) => {
+   dialog.showCertificateTrustDialog({message:'notice'},() => {
+
+   }) ;
+});
+
 
 //创建菜单
 let menuTemplate = [

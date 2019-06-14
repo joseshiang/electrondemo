@@ -14,9 +14,11 @@ function openExpoler(e) {
 
 function handleClick(e) {
    //console.log(e);
-   ipcRenderer.send('open-file-dialog');
-   ipcRenderer.on('selected-dictronary',(event,path) => {
-      $("#content").text(path);
-   });
+   //错误框
+   //ipcRenderer.send('open-error-dialog');
+   //消息框
+   //ipcRenderer.send("open-message-diag");
+   //验证框
+   ipcRenderer.send('open-center-diaglog');
 }
 
