@@ -1,9 +1,19 @@
 //引入内置模块
 const electron = require('electron');
-const {app,BrowserWindow,Menu,MenuItem,shell,dialog} = require('electron');
+const {app,BrowserWindow,Menu,MenuItem,shell,dialog,ipcMain} = require('electron');
 const path = require('path');
 const url = require('url');
 const fs = require("fs");
+
+//主进程与渲染进行进程通讯
+//选择文件
+ipcMain.on('open-file-dialog',(event) => {
+    dialog.showOpenDialog({properties:['openFile','openDirctory']},(files) => {
+        if(files) {
+            event.sender.send('selected-dictronary',files);
+        }
+    });
+});
 
 //创建菜单
 let menuTemplate = [
