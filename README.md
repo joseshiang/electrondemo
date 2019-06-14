@@ -14,6 +14,7 @@
     - 由于web页面操作原生GUI资源非常危险，容易造成资源泄露，使用渲染进程与主进程进行通讯，从而调用原生GUI API
     - 主进程 main process
     - 渲染进程 renderer processes
+- 打包命令:`npm run electron-build`
 
 
 

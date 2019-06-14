@@ -1,30 +1,50 @@
 //引入模块
-const fs = require("fs");
+const electron = require('electron');
+const os = require('os');
 
-//监听鼠标拖动文件(鼠标拖拽文件在面板上方)
-document.addEventListener('dragover',(e) => {
-    console.log("1");
-    e.preventDefault();
-    e.stopPropagation();
-});
+/**
+ * 打开资源管理器
+ */
+function openExpoler(e) {
+   //打开资源管理器
+   electron.shell.openItem(os.homedir());
+}
 
-//监听释放文件(鼠标在面板上方释放文件)
-document.addEventListener('drop',(e) => {
-    console.log("2");
-    e.preventDefault();
-    e.stopPropagation();
-    for(const f of e.dataTransfer.files) {
-        let path = f.path;
-        console.log(path);
-        fs.readFile(path,'utf-8',(err,data) => {
-            if(err) {
-                alert("出错啦!");
-                return;
-            }
-            $("#content").text(data);
-        });
-    }
-});
+let msg  = {
+  title : '基本通知',
+  body:'简短的通知!'
+};
 
+/**
+ * 通知
+ * @param e
+ */
+function notification(e) {
+   console.log(e);
+   //new window.Notification(msg.title,msg);
+   if (window.Notification) {
+      if (Notification.permission == "granted") {
+         popNotice();
+      }else if( Notification.permission != "denied"){
+         Notification.requestPermission(function (permission) {
+            popNotice();
+         });
+      }
+   } else {
+      alert('浏览器不支持Notification');
+   }
+}
 
+function popNotice() {
+   if (Notification.permission == "granted") {
+      let notification = new Notification("Hi，", {
+         body: '可以加你为好友吗？'
+      });
+
+      notification.onclick = function() {
+         alert('***已于' + new Date().toTimeString().split(' ')[0] + '加你为好友！');
+         notification.close();
+      };
+   }
+};
 
