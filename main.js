@@ -1,4 +1,4 @@
-//引入内置模块
+//引入模块
 const electron = require('electron');
 const {app,BrowserWindow,Menu,MenuItem,shell,dialog,ipcMain} = require('electron');
 const path = require('path');
@@ -28,6 +28,10 @@ ipcMain.on('open-infomation-dialog',(event) => {
     dialog.showMessageBox(options,(index) => {
         event.sender.send('information-dialog-selection',index);
     });
+});
+//获取应用程序信息
+ipcMain.on('get-app-info',(event)=> {
+    event.sender.send('got-app-info',app.getAppPath());
 });
 
 
