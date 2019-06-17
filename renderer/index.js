@@ -18,7 +18,11 @@ function handleClick(e) {
    //ipcRenderer.send('open-error-dialog');
    //消息框
    //ipcRenderer.send("open-message-diag");
-   //验证框
-   ipcRenderer.send('open-center-diaglog');
+   //信息对话框
+   ipcRenderer.send('open-infomation-dialog');
+   ipcRenderer.on('information-dialog-selection',(event,index) => {
+      let msg = index === 0 ? '是':'否';
+      $("#content").text('你已经选择 --->' + msg);
+   });
 }
 
